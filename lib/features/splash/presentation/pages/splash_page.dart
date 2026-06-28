@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:touch/core/constants/app_assets.dart';
 import 'package:touch/core/routes/route_names.dart';
+import 'package:touch/generated/locale_keys.g.dart';
 
 /// Splash page - simple app entry point
 /// Auto-navigates to home after 4 seconds
@@ -23,7 +24,7 @@ class _SplashPageState extends State<SplashPage> {
   void _navigateToHome() {
     Future.delayed(const Duration(seconds: 4), () {
       if (mounted) {
-        context.go(RoutesName.login.path);
+        context.go(RoutesName.home.path);
       }
     });
   }
@@ -31,29 +32,27 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFFD9E3E5), // top left
-              Color(0xFFB8CBCD), // top right darker effect
-              Color(0xFF7FA7AA), // middle
-              Color(0xFF005F63), // bottom
-            ],
-            stops: [0.0, 0.25, 0.65, 1.0],
-          ),
-        ),
-        child: Center(
-          child: Image.asset(AppAssets.splashLogo),
-
-          //  SvgPicture.asset(
-          //   AppAssets.splashLogo,
-          //   // colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
-          //   height: 120,
-          //   width: 120,
-          // ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // App Logo/Icon
+            const Icon(Icons.touch_app, size: 80, color: Colors.blue),
+            const SizedBox(height: 24),
+            // App Title
+            Text(
+              LocaleKeys.app_name.tr(),
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            const SizedBox(height: 48),
+            // Loading indicator
+            const CircularProgressIndicator(),
+            const SizedBox(height: 24),
+            Text(
+              LocaleKeys.loading.tr(),
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ],
         ),
       ),
     );

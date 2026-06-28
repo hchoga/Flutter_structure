@@ -12,13 +12,7 @@ import 'package:touch/features/home/domain/repositories/home_repository.dart';
 import 'package:touch/features/home/domain/usecases/get_home_list_usecase.dart';
 import 'package:touch/features/home/domain/usecases/get_home_usecase.dart';
 import 'package:touch/features/home/presentation/cubit/home_cubit.dart';
-import 'package:touch/features/login/data/datasources/login_local_data_source.dart';
-import 'package:touch/features/login/data/datasources/login_remote_data_source.dart';
-import 'package:touch/features/login/data/repositories/login_repository_impl.dart';
-import 'package:touch/features/login/domain/repositories/login_repository.dart';
-import 'package:touch/features/login/domain/usecases/login_usecase.dart';
-import 'package:touch/features/login/domain/usecases/logout_usecase.dart';
-import 'package:touch/features/login/presentation/cubit/login_cubit.dart';
+
 
 final sl = GetIt.instance;
 
@@ -88,44 +82,6 @@ void setupServiceLocator() {
     );
   });
 
-  // ==================== Login Feature ====================
-  // Data sources
-  sl.registerSingletonAsync<LoginLocalDataSource>(() async {
-    final secureStorage = await sl.getAsync<SecureStorageService>();
-    return LoginLocalDataSourceImpl(secureStorage: secureStorage);
-  });
-  sl.registerSingletonAsync<LoginRemoteDataSource>(() async {
-    final dioClient = await sl.getAsync<DioClient>();
-    return LoginRemoteDataSourceImpl(dioClient: dioClient);
-  });
 
-  // Repositories
-  sl.registerSingletonAsync<LoginRepository>(() async {
-    final remoteDataSource = await sl.getAsync<LoginRemoteDataSource>();
-    final localDataSource = await sl.getAsync<LoginLocalDataSource>();
-    return LoginRepositoryImpl(
-      remoteDataSource: remoteDataSource,
-      localDataSource: localDataSource,
-    );
-  });
-
-  // Use cases
-  sl.registerSingletonAsync<LoginUseCase>(() async {
-    final repository = await sl.getAsync<LoginRepository>();
-    return LoginUseCase(repository: repository);
-  });
-  sl.registerSingletonAsync<LogoutUseCase>(() async {
-    final repository = await sl.getAsync<LoginRepository>();
-    return LogoutUseCase(repository: repository);
-  });
-
-  // Cubits
-  sl.registerSingletonAsync<LoginCubit>(() async {
-    final loginUseCase = await sl.getAsync<LoginUseCase>();
-    final logoutUseCase = await sl.getAsync<LogoutUseCase>();
-    return LoginCubit(loginUseCase: loginUseCase, logoutUseCase: logoutUseCase);
-  });
-
-  // ==================== Forgot Password Feature ====================
 
 }

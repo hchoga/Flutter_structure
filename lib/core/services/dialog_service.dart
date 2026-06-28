@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:touch/core/constants/app_assets.dart';
-import 'package:touch/core/constants/app_colors.dart';
 
 class DialogService {
   static Future<bool?> show(BuildContext context, Widget content) {
@@ -33,12 +30,7 @@ class DialogService {
               child: CircleAvatar(
                 radius: 15.r,
                 backgroundColor: Colors.white,
-                child: SvgPicture.asset(
-                  AppAssets.rejectedIcon,
-                  color: AppColors.primary,
-                  height: 22.h,
-                  width: 22.w,
-                ),
+                child: Icon(Icons.accessible),
               ),
             ),
           ),

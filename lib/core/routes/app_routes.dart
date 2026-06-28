@@ -5,8 +5,6 @@ import 'package:touch/core/routes/custom_transitions.dart';
 import 'package:touch/core/routes/route_names.dart';
 import 'package:touch/features/home/presentation/cubit/home_cubit.dart';
 import 'package:touch/features/home/presentation/pages/home_page.dart';
-import 'package:touch/features/login/presentation/cubit/login_cubit.dart';
-import 'package:touch/features/login/presentation/pages/login_page.dart';
 import 'package:touch/features/splash/presentation/pages/splash_page.dart';
 import 'package:touch/service_locator.dart';
 
@@ -24,20 +22,6 @@ class AppRoutes {
               context: context,
               state: state,
               child: const SplashPage(),
-              transitionType: TransitionType.fade,
-            ),
-      ),
-      GoRoute(
-        name: RoutesName.login.name,
-        path: RoutesName.login.path,
-        pageBuilder: (context, state) =>
-            CustomTransitions.buildPageWithDefaultTransition<LoginPage>(
-              context: context,
-              state: state,
-              child: BlocProvider<LoginCubit>(
-                create: (context) => sl<LoginCubit>(),
-                child: const LoginPage(),
-              ),
               transitionType: TransitionType.fade,
             ),
       ),

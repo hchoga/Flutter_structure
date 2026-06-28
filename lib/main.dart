@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:touch/core/localization/localization_service.dart';
 import 'package:touch/core/routes/app_routes.dart';
 import 'package:touch/core/theme/app_theme.dart';
@@ -54,13 +53,12 @@ class MyApp extends StatelessWidget {
 
   Widget _buildAppWithWrapper(BuildContext context, Widget? child) {
     // Initialize EasyLoading wrapper
-    final _ = EasyLoadingConfig.configureWithScreenUtil();
 
-    var newChild = EasyLoading.init()(context, child);
+    var newChild = child;
 
     // Wrap with connectivity overlay only in release mode
     if (!kDebugMode) {
-      newChild = ConnectivityOverlay(child: newChild);
+      newChild = ConnectivityOverlay(child: newChild!);
     }
     // Global error widget builder
 
@@ -74,44 +72,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class EasyLoadingConfig {
-  static bool _isConfigured = false;
-
-  static void configureWithScreenUtil() {
-    if (_isConfigured) return;
-    EasyLoading.instance
-      ..displayDuration = const Duration(milliseconds: 2000)
-      ..loadingStyle = EasyLoadingStyle.custom
-      ..backgroundColor = Colors.white
-      ..textColor = Colors.blue
-      ..indicatorColor = Colors.yellow
-      ..maskColor = const Color.fromRGBO(0, 0, 0, 0.3)
-      ..progressColor = Colors.cyanAccent
-      ..userInteractions = false
-      ..dismissOnTap = false
-      ..fontSize = 12
-      ..contentPadding =
-          const EdgeInsets.all(10) // Now safe to use
-      ..animationStyle = EasyLoadingAnimationStyle.opacity
-      ..maskType = EasyLoadingMaskType.custom;
-    _isConfigured = true;
-  }
-
-  void hideLoading() {
-    EasyLoading.dismiss();
-  }
-
-  void showLoading(String text) {
-    EasyLoading.show(status: text);
-  }
-
-  // static void updateThemeColors({
-  //   required Color primaryColor,
-  //   Color? backgroundColor,
-  //   Color? textColor,
-  // }) {
-  //   EasyLoading.instance
-  //     ..textColor = textColor ?? primaryColor
-  //     ..backgroundColor = backgroundColor ?? Colors.white;
-  // }
-}

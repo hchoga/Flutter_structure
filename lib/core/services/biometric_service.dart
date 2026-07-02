@@ -1,7 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:local_auth/local_auth.dart';
-
-import '../../generated/locale_keys.g.dart';
 
 abstract class BiometricService {
   Future<bool> canAuthenticate();
@@ -24,7 +21,7 @@ class BiometricServiceImpl implements BiometricService {
   @override
   Future<bool> authenticate() async {
     try {
-       return await _localAuth.authenticate(
+      return await _localAuth.authenticate(
         localizedReason: "reason",
         options: const AuthenticationOptions(
           stickyAuth: true,

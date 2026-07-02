@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:touch/core/constants/app_colors.dart';
 import 'package:touch/core/theme/extension/text_style_extension.dart';
@@ -50,7 +50,7 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
           BoxShadow(
@@ -118,3 +118,4 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
     );
   }
 }
+

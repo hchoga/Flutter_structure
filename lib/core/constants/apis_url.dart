@@ -1,5 +1,5 @@
 abstract final class ApisUrl {
-  //  https://erp-hr.testdomain100.online/api
+  //  https://productowner.testdomain100.online/api
 
   //base url
   static const String baseUrl = "https://erp-hr.testdomain100.online/api";

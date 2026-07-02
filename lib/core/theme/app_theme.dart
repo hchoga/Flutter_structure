@@ -11,8 +11,10 @@ class AppTheme {
   static const Color primaryDarkColor = AppColors.primaryDark;
   static const Color secondaryColor = AppColors.primaryLight;
   static const Color errorColor = AppColors.error;
-  static const Color backgroundColor = AppColors.background;
-  static const Color surfaceColor = AppColors.neutral100;
+  // Literal light-theme values (AppColors.background / neutral100 are now
+  // brightness-aware getters, so they can't be used in a const context here).
+  static const Color backgroundColor = Color(0xFFF8FAFC);
+  static const Color surfaceColor = Color(0xFFFFFFFF);
 
   static ThemeData getLightTheme() {
     return ThemeData(
@@ -106,6 +108,7 @@ class AppTheme {
           fontSize: 24,
           fontWeight: FontWeight.w700,
           height: 1.4,
+          color: Colors.white,
         ),
       ),
       textTheme: TextTheme(
@@ -125,6 +128,17 @@ class AppTheme {
         labelLarge: TextStyleExtension.standard.bodyLargeBold,
         labelMedium: TextStyleExtension.standard.bodyMediumBold,
         labelSmall: TextStyleExtension.standard.bodySmallBold,
+      ),
+      // Match the light theme's button text style so toggling themes doesn't
+      // try to interpolate TextStyles with different `inherit` values.
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: primaryColor,
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          textStyle: TextStyleExtension.standard.bodyLargeBold,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
       ),
     );
   }

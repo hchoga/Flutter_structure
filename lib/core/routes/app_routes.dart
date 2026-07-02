@@ -8,8 +8,8 @@ import 'package:touch/features/home/presentation/pages/home_page.dart';
 import 'package:touch/features/splash/presentation/pages/splash_page.dart';
 import 'package:touch/service_locator.dart';
 
-/// GoRouter configuration
-/// Following SOLID principles (Single Responsibility Principle)
+/// Extra passed when navigating to the new-permission screen in edit mode.
+
 class AppRoutes {
   static final GoRouter router = GoRouter(
     initialLocation: RoutesName.splash.path,
@@ -35,12 +35,11 @@ class AppRoutes {
               state: state,
               child: BlocProvider<HomeCubit>(
                 create: (context) => sl<HomeCubit>(),
-                child: const HomePage(),
+                child: HomePage(),
               ),
               transitionType: TransitionType.fade,
             ),
       ),
-      // Add more routes here
     ],
     errorBuilder: (context, state) {
       return Scaffold(

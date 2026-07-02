@@ -82,4 +82,5 @@ abstract final class AppAssets {
   static const String profileLegalDocumentsIcon =
       "$imagePath/profile_legal_documents.svg";
   static const String languageIcon = "$imagePath/language_icon.svg";
+  static const String whatsAppLogo="$imagePath/whatsapp_logo.svg";
 }

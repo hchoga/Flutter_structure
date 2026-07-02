@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:touch/core/constants/app_colors.dart';
@@ -35,7 +35,7 @@ class AppBarWidget extends StatelessWidget {
         width: 32.w,
         height: 32.h,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.surface,
           borderRadius: BorderRadius.circular(25),
           border: Border.all(color: AppColors.borderColor),
         ),
@@ -72,3 +72,4 @@ class AppBarWidget extends StatelessWidget {
     );
   }
 }
+

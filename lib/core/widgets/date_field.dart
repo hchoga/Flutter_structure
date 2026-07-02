@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:touch/core/constants/app_colors.dart';
 import 'package:touch/core/theme/extension/text_style_extension.dart';
@@ -25,7 +25,7 @@ class DateField extends StatelessWidget {
         height: height ?? 42.h,
         padding: EdgeInsets.symmetric(horizontal: 14.w),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.surface,
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(
@@ -61,3 +61,4 @@ class DateField extends StatelessWidget {
     );
   }
 }
+

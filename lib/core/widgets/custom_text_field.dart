@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:touch/core/constants/app_colors.dart';
 import 'package:touch/core/theme/extension/text_style_extension.dart';
 
@@ -54,7 +54,7 @@ class CustomTextField extends StatelessWidget {
             onChanged: onChanged,
             decoration: InputDecoration(
               filled: true,
-              fillColor: Colors.white,
+              fillColor: AppColors.surface,
 
               // Custom hint with optional red star
               hint: RichText(

@@ -1,4 +1,4 @@
-# touch
+# Flutter Structure
 
 A Flutter application built with Clean Architecture and SOLID principles.
 
